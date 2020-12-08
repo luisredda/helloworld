@@ -2,6 +2,9 @@
 kind: pipeline
 name: default
 
+environment:
+  TESTE: ola
+  TESTE1: mundo
 steps:
 - name: backend
   image: golang:1.13-alpine
@@ -14,11 +17,4 @@ steps:
   - echo $USERNAME
   - echo $USERNAME > a.txt
   - cat a.txt
-- name: publish  
-  image: plugins/docker
-  settings:
-    access_key:
-      from_secret: u_docker
-    secret_key:
-      from_secret: p_docker
-    repo: luisredda/gohello
+  - echo $TESTE $TESTE1
